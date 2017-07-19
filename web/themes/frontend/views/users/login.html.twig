@@ -1,0 +1,68 @@
+{% extends '@frontend/base.html.twig' %}
+
+{% block body %}
+
+<div class="container-user">
+    <div class="row">
+
+        <div class="main">
+
+            <h3>Please Log In, or <a href="{{ path('user_register_page') }}">Sign Up</a></h3>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <a href="#" class="btn btn-lg btn-info btn-block">Google</a>
+                </div>
+            </div>
+            <div class="login-or">
+                <hr class="hr-or">
+                <span class="span-or">or</span>
+            </div>
+
+            {{ form_start(form, {'attr': {'id': 'form-login', 'role': 'form'}}) }}
+
+                <div class="form-group">
+                    <label for="inputUsernameEmail">Email or Phone number</label>
+                    {{ form_widget(form.account, {'attr': {'class': 'form-control','placeholder': 'Email or Phone number', 'autocomplete' : 'off'}, 'id' : 'login_account'}) }}
+                </div>
+                <div class="form-group">
+                    <a class="pull-right" href="{{ path('user_forgot_password_page') }}">Forgot password?</a>
+                    <label for="inputPassword">Password</label>
+                    {{ form_widget(form.password, {'attr': {'class': 'form-control','placeholder': 'Password', 'autocomplete' : 'off'}, 'id' : 'login_password'}) }}
+                </div>
+                <div class="checkbox pull-right">
+                    <label>
+                        {{ form_widget(form.user_remember, {'attr': {'class': ''}, 'id' : 'login_user_remember'}) }}
+                        Remember me </label>
+                </div>
+                <button type="submit" class="btn btn btn-primary" id="submit-form-login">
+                    Log In
+                </button>
+
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+</div>
+
+<div id="popup-login" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Errors Message</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

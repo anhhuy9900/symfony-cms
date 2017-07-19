@@ -1,0 +1,54 @@
+{% extends '@frontend/base.html.twig' %}
+
+{% block body %}
+
+    <!-- Page Header -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">News page</h1>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    {% if results is not empty %}
+        {% set count = 0 %}
+        {% for key,value in results %}
+            <!-- Projects Row -->
+            {% if count % 3 == 0 %}
+            <div class="row">
+            {% endif %}
+                {% set count = count + 1 %}
+                <div class="col-md-4 portfolio-item">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                    </a>
+                    <h4>
+                        <a href="{{ path('news_detail_page', {'slug' : value.slug }) }}">{{ value.title }}</a>
+                    </h4>
+                    <p>{{ value.description }}</p>
+                </div>
+            {% if count % 3 == 0  %}
+            </div>
+            {% endif %}
+        {% endfor %}
+    <!-- /.row -->
+    {% endif %}
+
+
+    <hr>
+
+    <!-- Pagination -->
+    <div class="row text-center">
+        <div class="col-lg-12">
+
+            <!--Pagination -->
+            {{ pagination | raw }}
+            <!--END Pagination -->
+
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+{% endblock %}

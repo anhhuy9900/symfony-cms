@@ -1,0 +1,40 @@
+services:
+   app.global_service:
+      class: AppBundle\Services\GlobalService
+      arguments: ["@doctrine.orm.entity_manager"]
+      calls:
+            - [ setContainer, [ '@service_container' ]]
+
+   app.admincp_service:
+      class: AppBundle\Services\AdminCPService
+      arguments: ["@doctrine.orm.entity_manager"]
+      calls:
+            - [ setContainer, [ '@service_container' ]]
+
+   app.upload_files_service:
+      class: AppBundle\Services\UploadFilesService
+      arguments: ["@doctrine.orm.entity_manager"]
+      calls:
+            - [ setContainer, [ '@service_container' ]]
+
+   app.global_helper_service:
+      class: AppBundle\Services\GlobalHelperService
+      arguments: ["@doctrine.orm.entity_manager"]
+      calls:
+            - [ setContainer, [ '@service_container' ]]
+
+   app.image_helper:
+      class: AppBundle\Services\ImageHelper
+
+   app.mail_helper:
+      class: AppBundle\Services\MailService
+      arguments:
+             - @service_container
+
+   app.twig_extension:
+      class: AppBundle\Twig\AppExtension
+      arguments:
+            - @service_container
+      public: false
+      tags:
+            - { name: twig.extension }

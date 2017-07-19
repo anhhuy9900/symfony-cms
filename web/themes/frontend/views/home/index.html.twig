@@ -1,0 +1,41 @@
+{% extends '@frontend/base.html.twig' %}
+
+{% block body %}
+
+    <!-- Page Header -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Home page</h1>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    {% if results is not empty %}
+        {% set count = 0 %}
+        {% for key,value in results %}
+            <!-- Projects Row -->
+            {% if count % 3 == 0 %}
+            <div class="row">
+            {% endif %}
+                {% set count = count + 1 %}
+                <div class="col-md-4 portfolio-item">
+                    <a href="{{ path('news_detail_page', {'slug' : value.slug }) }}" title="{{ value.title }}">
+                        <img class="img-responsive" src="{{ asset(value.image_url) }}" alt="">
+                    </a>
+                    <h4>
+                        <a href="{{ path('news_detail_page', {'slug' : value.slug }) }}">{{ value.title }}</a>
+                    </h4>
+                    <p>{{ value.description }}</p>
+                </div>
+            {% if count % 3 == 0  %}
+            </div>
+            {% endif %}
+        {% endfor %}
+    <!-- /.row -->
+    {% endif %}
+
+
+    <hr>
+
+
+{% endblock %}

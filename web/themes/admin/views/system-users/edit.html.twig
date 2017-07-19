@@ -1,0 +1,86 @@
+{% extends '@admin/admin.html.twig' %}
+
+{% block body %}
+
+<div class="page-header">
+	<h1>
+		Form Elements
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			{{ title }}
+		</small>
+	</h1>
+</div><!-- /.page-header -->
+
+<div class="row">
+	<div class="col-xs-12">
+		<!-- PAGE CONTENT BEGINS -->
+		<!--<form class="form-horizontal" role="form">-->
+		{{ form_start(form, {'attr': {'class': 'form-horizontal', 'role': 'form'}}) }}
+
+			<div class="form-group">
+				{{ form_label(form.role_id, form.role_id, {'label_attr': {'class': 'col-sm-3 control-label no-padding-right','role': 'form-field-1'}}) }}
+
+				<div class="col-sm-2">
+					{{ form_widget(form.role_id, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.username, form.username, {'label_attr': {'class': 'col-sm-3 control-label no-padding-right','role': 'form-field-1'}}) }}
+
+				<div class="col-sm-9">
+					{{ form_widget(form.username, {'attr': {'class': 'col-xs-10 col-sm-5','placeholder': 'Value'}}) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.email, form.email, {'label_attr': {'class': 'col-sm-3 control-label no-padding-right','role': 'form-field-1'}}) }}
+
+				<div class="col-sm-9">
+					{{ form_widget(form.email, {'attr': {'class': 'col-xs-10 col-sm-5','placeholder': 'Value'}}) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.password, form.password, {'label_attr': {'class': 'col-sm-3 control-label no-padding-right','role': 'form-field-1'}}) }}
+
+				<div class="col-sm-9">
+					{{ form_widget(form.password, {'attr': {'class': 'col-xs-10 col-sm-5','placeholder': 'Value'}}) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.status, form.status, {'label_attr': {'class': 'col-sm-3 control-label no-padding-right','role': 'form-field-1'}}) }}
+
+				<div class="col-sm-2">
+					{{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+
+			<div class="clearfix form-actions">
+				<div class="col-md-offset-3 col-md-9">
+					<!--<button class="btn btn-info" type="button">
+						<i class="ace-icon fa fa-check bigger-110"></i>
+						Submit
+					</button>-->
+
+					{{ form_widget(form.send, {'attr': {'class': 'btn btn-info'}}) }}
+
+					&nbsp; &nbsp; &nbsp;
+					<a href="{{ path('admincp_system_users_page') }}" class="btn" type="reset">
+						<i class="ace-icon fa fa-undo bigger-110"></i>
+						Back
+					</a>
+				</div>
+			</div>
+
+		{{ form_end(form) }}
+
+		
+		</div><!-- PAGE CONTENT ENDS -->
+	</div><!-- /.col -->
+</div><!-- /.row -->
+
+
+{% endblock %}
